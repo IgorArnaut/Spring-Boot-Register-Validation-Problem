@@ -1,0 +1,194 @@
+<form action="#" th:action="@{/oglasi/izmena/{id}(id=${listing.id})}" th:object="${listingFormDTO}" method="post"
+	th:fragment="form">
+	<fieldset>
+		<legend class="fs-4">Informacije o zgradi</legend>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Grad</div>
+			<div class="col-lg-2 col-sm-4">
+				<select class="form-select" th:field="*{address.city}">
+					<option th:each="city : ${allCities}" th:value="${city}" th:text="${city}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<label class="col-lg-1 col-sm-2 col-form-label">Ulica</label>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="text" th:field="*{address.street}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<label class="col-lg-1 col-sm-2 col-form-label">Broj ulice</label>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{address.streetNum}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('address.streetNum')}"
+				th:errors="*{address.streetNum}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<label class="col-lg-1 col-sm-2 col-form-label">Izgrađen</label>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{building.yearConstructed}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('building.yearConstructed')}"
+				th:errors="*{building.yearConstructed}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<label class="col-lg-1 col-sm-2 col-form-label">Spratnost</label>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{building.numOfFloors}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('building.numOfFloors')}"
+				th:errors="*{building.numOfFloors}"></div>
+		</div>
+		<div class="form-check-inline">
+			<label class="form-check-label">Parking</label>
+			<input class="form-check-input" type="checkbox" th:field="*{building.parking}">
+		</div>
+		<div class="form-check-inline">
+			<label class="form-check-label">Garaža</label>
+			<input class="form-check-input" type="checkbox" th:field="*{building.garage}">
+		</div>
+		<div class="form-check-inline">
+			<label class="form-check-label">Lift</label>
+			<input class="form-check-input" type="checkbox" th:field="*{building.elevator}">
+		</div>
+		<div class="form-check-inline">
+			<label class="form-check-label">Video nadzor</label>
+			<input class="form-check-input" type="checkbox" th:field="*{building.cctv}">
+		</div>
+		<div class="form-check-inline">
+			<label class="form-check-label">Interfon</label>
+			<input class="form-check-input" type="checkbox" th:field="*{building.intercom}">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="fs-4">Informacije o stanu</legend>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Sprat</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{apartment.floor}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('apartment.floor')}"
+				th:errors="*{apartment.floor}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Površina</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{apartment.area}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('apartment.area')}" th:errors="*{apartment.area}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Cena</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{apartment.price}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('apartment.price')}"
+				th:errors="*{apartment.price}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Broj soba</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="number" th:field="*{apartment.numOfRooms}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('apartment.numOfRooms')}"
+				th:errors="*{apartment.numOfRooms}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Stanje</div>
+			<div class="col-lg-2 col-sm-4">
+				<select class="form-select" th:field="*{apartment.state}">
+					<option value="Izvorno">Izvorno</option>
+					<option value="Novo">Novo</option>
+					<option value="Renovirano">Renovirano</option>
+					<option value="Lux">Lux</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Grejanje</div>
+			<div class="col-lg-2 col-sm-4">
+				<select class="form-select" th:field="*{apartment.heating}">
+					<option value="Gradsko">Gradsko</option>
+					<option value="Etažno">Etažno</option>
+					<option value="Podno">Podno</option>
+					<option value="Struja">Struja</option>
+					<option value="Gas">Gas</option>
+					<option value="TA">TA</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Opremljenost</div>
+			<div class="col-lg-2 col-sm-4">
+				<select class="form-select" th:field="*{apartment.equipment}">
+					<option value="Namešten">Namešten</option>
+					<option value="Polunamešten">Polunamešten</option>
+					<option value="Prazan">Prazan</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Predmeti</div>
+			<div class="col-lg-2 col-sm-4">
+				<select class="form-select" th:field="*{items}" multiple>
+					<option th:each="item : ${allItems}" th:value="${item.id}" th:text="${item.name}"></option>
+				</select>
+			</div>
+			<div th:if="${#fields.hasErrors('items')}" th:errors="*{items}"></div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="fs-4">Uslovi zakupa</legend>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Useljiv</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="date" th:field="*{terms.dateAvailable}" th:value="*{terms.dateAvailable}">
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('terms.dateAvailable')}"
+				th:errors="*{terms.dateAvailable}"></div>
+		</div>
+		<div class="form-check">
+			<label class="form-check-label">Depozit</label>
+			<input class="form-check-input" type="checkbox" th:field="*{terms.deposit}">
+		</div>
+		<div class="form-check">
+			<label class="form-check-label">Za studente</label>
+			<input class="form-check-input" type="checkbox" th:field="*{terms.forStudents}">
+		</div>
+		<div class="form-check">
+			<label class="form-check-label">Za radnike</label>
+			<input class="form-check-input" type="checkbox" th:field="*{terms.forWorkers}">
+		</div>
+		<div class="form-check">
+			<label class="form-check-label">Dozvoljeno pušenje</label>
+			<input class="form-check-input" type="checkbox" th:field="*{terms.smokingAllowed}">
+		</div>
+		<div class="form-check">
+			<label class="form-check-label">Dozvoljeni ljubimci</label>
+			<input class="form-check-input" type="checkbox" th:field="*{terms.petsAllowed}">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="fs-4">Oglas</legend>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Naslov</div>
+			<div class="col-lg-2 col-sm-4">
+				<input class="form-control" type="text" th:field="*{listing.title}">
+			</div>
+			<div class="col-lg-3 col-sm-6 form-text text-danger" th:if="${#fields.hasErrors('listing.title')}"
+				th:errors="*{listing.title}"></div>
+		</div>
+		<div class="row mb-3 align-items-center">
+			<div class="col-lg-1 col-sm-2 col-form-label">Opis</div>
+			<div class="col-lg-2 col-sm-4">
+				<textarea class="form-control" th:field="*{listing.description}" th:text="*{listing.description}" cols="40"
+					rows="10"></textarea>
+			</div>
+			<div class="col-3 form-text text-danger" th:if="${#fields.hasErrors('listing.description')}"
+				th:errors="*{listing.description}"></div>
+		</div>
+	</fieldset>
+	<input class="btn btn-primary" type="submit" th:value="${value}">
+</form>

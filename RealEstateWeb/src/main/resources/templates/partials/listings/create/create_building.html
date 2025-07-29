@@ -1,0 +1,63 @@
+<fieldset th:fragment="building">
+	<legend class="h3 fw-semibold">Informacije o zgradi</legend>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Grad</label>
+		<div class="col-sm-8">
+			<select class="form-select" th:field="*{address.city}">
+				<option th:each="city : ${allCities}" th:value="${city}">[[${city}]]</option>
+			</select>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Ulica</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="text" th:field="*{address.street}">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Broj ulice</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{address.streetNum}" min="1">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('address.streetNum')}" th:errors="*{address.streetNum}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Izgrađen</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{building.yearConstructed}" min="2000">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('building.numOfFloors')}" th:errors="*{building.yearConstructed}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Spratnost</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{building.numOfFloors}" min="1">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('terms.dateAvailable')}" th:errors="*{building.numOfFloors}"></span>
+		</div>
+	</div>
+	<fieldset class="row mb-3">
+		<div class="col">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" th:field="*{building.elevator}">
+				<label class="form-check-label">Lift</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" th:field="*{building.parking}">
+				<label class="form-check-label">Parking</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" th:field="*{building.garage}">
+				<label class="form-check-label">Garaža</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" th:field="*{building.cctv}">
+				<label class="form-check-label">Video nadzor</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" th:field="*{building.intercom}">
+				<label class="form-check-label">Interfon</label>
+			</div>
+		</div>
+	</fieldset>
+</fieldset>

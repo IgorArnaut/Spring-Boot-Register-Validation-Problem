@@ -1,0 +1,34 @@
+<fieldset th:fragment="terms">
+	<legend class="h3 fw-semibold">Uslovi zakupa</legend>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Useljiv</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="date" th:field="*{terms.dateAvailable}">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('terms.dateAvailable')}" th:errors="*{terms.dateAvailable}"></span>
+		</div>
+	</div>
+	<fieldset class="row mb-3">
+		<div class="col">
+			<div class="form-check">
+				<label class="form-check-label">Depozit</label>
+				<input class="form-check-input" type="checkbox" th:field="*{terms.deposit}">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">Za studente</label>
+				<input class="form-check-input" type="checkbox" th:field="*{terms.forStudents}">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">Za radnike</label>
+				<input class="form-check-input" type="checkbox" th:field="*{terms.forWorkers}">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">Dozvoljeno pušenje</label>
+				<input class="form-check-input" type="checkbox" th:field="*{terms.smokingAllowed}">
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">Dozvoljeni ljubimci</label>
+				<input class="form-check-input" type="checkbox" th:field="*{terms.petsAllowed}">
+			</div>
+		</div>
+	</fieldset>
+</fieldset>

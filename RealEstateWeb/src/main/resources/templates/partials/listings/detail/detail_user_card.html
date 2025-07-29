@@ -1,0 +1,8 @@
+<div class="card" th:fragment="user_card (poster)">
+	<img class="rounded-circle w-50 mx-auto my-3" src="/images/avatar-3814081_640.png" alt="Avatar">
+	<div class="card-body">
+		<h2 class="fw-bold"><a class="card-title" style="text-decoration: none" th:href="@{/korisnici/{id}(id=${poster.id})}">[[${poster}]]</a></h2>
+		<p class="card-text"><strong>Broj telefona</strong>: [[${poster.phoneNum}]]</p>
+		<a class="btn btn-primary fw-semibold" href="#">Pošaljite poruku</a>
+	</div>
+</div>

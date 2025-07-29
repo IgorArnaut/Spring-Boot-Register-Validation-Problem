@@ -1,0 +1,17 @@
+<fieldset th:fragment="main">
+	<legend class="h3 fw-semibold">Oglas</legend>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Naslov</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="text" th:field="*{listing.title}">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('listing.title')}" th:errors="*{listing.title}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Opis</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" th:field="*{listing.description}" cols="40" rows="10"></textarea>
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('listing.description')}" th:errors="*{listing.description}"></span>
+		</div>
+	</div>
+</fieldset>

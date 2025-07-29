@@ -1,0 +1,25 @@
+<div class="card mb-3" th:fragment="card (listing)">
+	<div class="row g-0">
+		<div class="col-md-5">
+			<img class="img-fluid" src="/images/bedroom-1872196_640.jpg" alt="Stan">
+		</div>
+		<div class="col-md-7">
+			<div class="card-body">
+				<h2 class="fw-bold">
+					<a class="card-title" style="text-decoration: none" th:href="@{/oglasi/{id}(id=${listing.id})}">[[${listing}]]</a>
+				</h2>
+				<p class="card-subtitle mb-3">[[${listing.apartment.building}]]</p>
+				<p class="card-text">
+					[[${listing.apartment.getNumOfRoomsString()}]], [[${listing.apartment.area}]] m <sup>2</sup>
+				</p>
+			</div>
+		</div>
+		<div class="card-footer d-flex justify-content-between">
+			<small>
+				<th:block th:if="${listing.updatedAt.isAfter(listing.createdAt)}">Ažuriran: [[${#temporals.format(listing.updatedAt, 'dd.MM.yyyy HH:mm')}]]</th:block>
+				<th:block th:unless="${listing.updatedAt.isAfter(listing.createdAt)}"> Postavljen: [[${#temporals.format(listing.createdAt, 'dd.MM.yyyy HH:mm')}]] </th:block>
+			</small>
+			<div class="btn bg-primary fw-semibold text-light">[[${listing.apartment.price}]] EUR</div>
+		</div>
+	</div>
+</div>

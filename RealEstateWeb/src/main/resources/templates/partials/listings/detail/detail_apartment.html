@@ -1,0 +1,24 @@
+<div class="mb-3" th:fragment="apartment (apartment)">
+	<h3 class="fw-semibold mb-3">Informacije o stanu</h3>
+	<ul class="list-group list-group-horizontal mb-3">
+		<li class="list-group-item flex-fill">[[${apartment.getNumOfRoomsString()}]]</li>
+		<li class="list-group-item flex-fill">
+			[[${apartment.area}]] m<sup>2</sup>
+		</li>
+		<li class="list-group-item flex-fill">[[${apartment.getFloorString()}]]/[[${apartment.building.numOfFloors}]] sprat</li>
+	</ul>
+	<table class="table">
+		<tr>
+			<td>Stanje</td>
+			<td>[[${apartment.state}]]</td>
+		</tr>
+		<tr>
+			<td>Grejanje</td>
+			<td>[[${apartment.heating}]]</td>
+		</tr>
+		<tr>
+			<td>Opremljenost</td>
+			<td>[[${apartment.equipment}]]</td>
+		</tr>
+	</table>
+</div>

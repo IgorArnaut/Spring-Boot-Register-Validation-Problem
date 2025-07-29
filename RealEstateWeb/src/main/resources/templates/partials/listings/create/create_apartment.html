@@ -1,0 +1,74 @@
+<fieldset th:fragment="apartment">
+	<legend class="h3 fw-semibold">Informacije o stanu</legend>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Sprat</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{apartment.floor}" min="0">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('apartment.floor')}" th:errors="*{apartment.floor}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Površina</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{apartment.area}" min="10">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('apartment.area')}" th:errors="*{apartment.area}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Broj soba</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{apartment.numOfRooms}" min="0">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('apartment.numOfRooms')}" th:errors="*{apartment.numOfRooms}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Cena</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="number" th:field="*{apartment.price}" min="100">
+			<span class="form-text text-danger" th:if="${#fields.hasErrors('apartment.price')}" th:errors="*{apartment.price}"></span>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Stanje</label>
+		<div class="col-sm-8">
+			<select class="form-select" th:field="*{apartment.state}">
+				<option value="Izvorno">Izvorno</option>
+				<option value="Novo">Novo</option>
+				<option value="Renovirano">Renovirano</option>
+				<option value="Lux">Lux</option>
+			</select>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Grejanje</label>
+		<div class="col-sm-8">
+			<select class="form-select" th:field="*{apartment.heating}">
+				<option value="Gradsko">Gradsko</option>
+				<option value="Etažno">Etažno</option>
+				<option value="Podno">Podno</option>
+				<option value="Struja">Struja</option>
+				<option value="Gas">Gas</option>
+				<option value="TA">TA</option>
+			</select>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Opremljenost</label>
+		<div class="col-sm-8">
+			<select class="form-select" th:field="*{apartment.equipment}">
+				<option value="Namešten">Namešten</option>
+				<option value="Polunamešten">Polunamešten</option>
+				<option value="Prazan">Prazan</option>
+			</select>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-4 col-form-label">Predmeti</label>
+		<div class="col-sm-8">
+			<select class="form-select" th:if="${#fields.hasErrors('items')}" th:field="*{items}" multiple>
+				<option th:each="item : ${allItems}"  th:value="${item.id}" th:text="${item.name}"></option>
+			</select>
+			<span class="form-text text-danger" th:errors="*{items}"></span>
+		</div>
+	</div>
+</fieldset>

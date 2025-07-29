@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title layout:fragment="title"></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<style>
+html, body {
+	height: 100%;
+}
+
+#logo {
+	height: 24px;
+	filter: brightness(200);
+}
+</style>
+</head>
+<body class="d-flex flex-column">
+	<nav class="navbar navbar-expand-lg bg-success mb-3 sticky-top mb-3 py-0">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold text-light text-center" th:href="@{/oglasi}">
+				<img class="d-block" id="logo" src="/images/320px-Spring_Framework_Logo_2018.svg.png" alt="Logo">
+				Nekretnine
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item btn btn-success px-1 py-3">
+						<a class="nav-link fw-bold text-light" th:href="@{/oglasi}">Oglasi</a>
+					</li>
+					<li class="nav-item btn btn-success px-1 py-3">
+						<a class="nav-link fw-bold text-light" th:href="@{/oglasi/postavka}">Novi oglas</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					<li sec:authorize="!isAuthenticated()" class="nav-item btn btn-success px-1 py-3">
+						<a class="nav-link fw-bold text-light" th:href="@{/korisnici/prijava}">Prijava</a>
+					</li>
+					<li sec:authorize="!isAuthenticated()" class="nav-item btn btn-success px-1 py-3">
+						<a class="nav-link fw-bold text-light" th:href="@{/korisnici/registracija}">Registracija</a>
+					</li>
+					<li sec:authorize="isAuthenticated()" class="nav-item btn btn-success px-1 py-3">
+						<a class="nav-link fw-bold text-light" th:href="@{/korisnici/odjava}">Odjava</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="flex-grow-1">
+		<div layout:fragment="content"></div>
+	</main>
+	<footer class="bg-success flex-shrink-0">
+		<div class="container-fluid d-flex justify-content-center my-3">
+			<div class="fw-semibold text-light">Igor Arnautović 243m/23</div>
+		</div>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

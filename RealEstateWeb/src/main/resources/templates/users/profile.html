@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
+<head>
+<title layout:fragment="title">Postavka oglasa</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3">[[${user}]]</h1>
+		<div class="row">
+			<div class="col-3">
+				<div class="card">
+					<img class="rounded-circle w-50 mx-auto my-3" src="/images/avatar-3814081_640.png" alt="Avatar">
+					<div class="card-body">
+						<h2 class="fw-bold card-title">[[${user}]]</h2>
+						<p class="card-text">[[${user.firstName}]] [[${user.lastName}]]</p>
+						<p class="card-text"><strong>Broj telefona</strong>: [[${user.phoneNum}]]</p>
+						<p class="card-text"><strong>Datum rođenja</strong>: [[${#temporals.format(user.birthDate, "dd.MM.yyyy")}]]</p>
+						<a class="btn btn-primary fw-semibold" href="#">Pošaljite poruku</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<th:block th:if="${!listings.isEmpty()}">
+					<th:block th:each="listing : ${listings}">
+						<div th:replace="~{partials/listings/list_card :: card(listing=${listing})}"></div>
+					</th:block>
+					<ul class="pagination">
+						<li class="page-item">
+							<a class="page-link" href="?page=1">&laquo; first</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="?page=1">previous</a>
+						</li>
+						<li class="current">Page</li>
+						<li class="page-item">
+							<a class="page-link" href="?">next</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="?">last &raquo;</a>
+						</li>
+					</ul>
+				</th:block>
+				<th:block th:unless="${!listings.isEmpty()}">
+					<div class="row">Korisnik nema oglase.</div>
+				</th:block>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

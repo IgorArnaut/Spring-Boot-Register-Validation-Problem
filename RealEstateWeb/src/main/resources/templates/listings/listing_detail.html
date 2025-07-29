@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
+<head>
+<title layout:fragment="title" th:text="${listing.title}"></title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3" th:text="${listing.title}"></h1>
+		<div class="row mb-3">
+			<div class="col d-flex justify-content-between">
+				[[${listing.apartment.building}]]
+				<div th:if="${user.id == listing.poster.id}">
+					<a class="btn btn-secondary fw-semibold me-2" th:href="@{/oglasi/izmena/{id}(id=${listing.id})}">Izmeni</a>
+					<a class="btn btn-danger fw-semibold" th:href="@{/oglasi/brisanje/{id}(id=${listing.id})}">Obriši</a>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-9">
+				<div th:replace="~{partials/listings/detail/detail_apartment_card :: apartment_card}"></div>
+			</div>
+			<div class="col-3">
+				<div th:replace="~{partials/listings/detail/detail_user_card :: user_card(poster=${listing.poster})}"></div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col">
+				<div th:replace="~{partials/listings/detail/detail_terms :: terms(terms=${listing.terms})}"></div>
+				<h3 class="fw-semibold mb-3">Predmeti</h3>
+				<p class="mb-3">[[${#strings.listJoin(listing.apartment.items, ", ")}]]</p>
+				<h3 class="fw-semibold mb-3">Opis</h3>
+				<p>[[${listing.description}]]</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

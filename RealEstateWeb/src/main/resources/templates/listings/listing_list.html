@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
+<head>
+<title layout:fragment="title">Oglasi</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3">Oglasi</h1>
+		<div class=row>
+			<div class="col-4">
+				<div th:replace="~{partials/listings/list/list_search_form :: form}"></div>
+			</div>
+			<div class="col-6">
+				<form class="mb-3" th:action="@{?sort}" method="get">
+					<select class="form-select w-50" name="sort">
+						<option value="newer">Prvo najnoviji</option>
+						<option value="popular">Prvo najpopularniji</option>
+						<option value="bigger">Po kvadraturi (opadajuće)</option>
+						<option value="smaller">Po kvadraturi (rastuće)</option>
+						<option value="expensive">Po ceni (opadajuće)</option>
+						<option value="cheaper">Po ceni (rastuće)</option>
+					</select>
+					<input class="btn btn-primary fw-semibold" type="submit" value="submit">
+				</form>
+				<th:block th:if="${!listings.isEmpty()}">
+					<th:block th:each="listing : ${listings}">
+						<div th:replace="~{partials/listings/list/list_card :: card(listing=${listing})}"></div>
+					</th:block>
+				</th:block>
+				<th:block th:unless="${!listings.isEmpty()}">
+					<div>Oglasi nisu dostupni.</div>
+				</th:block>
+				<ul class="pagination">
+					<th:block th:if="${listingsPage.hasPrevious()}">
+						<li class="page-item">
+							<a class="page-link" th:href="@{?page=1}">&laquo; Prva</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" th:href="@{'?page=' + ${listingsPage.previousPageable().getPageNumber()}}">Prethodna</a>
+						</li>
+					</th:block>
+					<li class="current">Stranica [[${listingsPage.getNumber()}]] od [[${listingsPage.getTotalPages()}]]</li>
+					<th:block th:if="${listingsPage.hasNext()}">
+						<li class="page-item">
+							<a class="page-link" th:href="@{'?page=' + ${listingsPage.nextPageable().getPageNumber()}}">Sledeća</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" th:href="@{'?page=' + ${listingsPage.getTotalPages()}}">Poslednja &raquo;</a>
+						</li>
+					</th:block>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

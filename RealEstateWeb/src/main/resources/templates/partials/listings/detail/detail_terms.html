@@ -1,0 +1,11 @@
+<div class="mb-3" th:fragment="terms (terms)">
+	<h3 class="fw-semibold mb-3">Uslovi zakupa</h3>
+	<ul class="list-group-flush">
+		<li class="list-group-item">Useljiv [[${#temporals.format(listing.terms.dateAvailable, 'dd.MM.yyyy')}]]</li>
+		<li class="list-group-item" th:if="${terms.deposit}">Depozit</li>
+		<li class="list-group-item" th:if="${terms.forStudents}">Za studente</li>
+		<li class="list-group-item" th:if="${terms.forWorkers}">Za radnike</li>
+		<li class="list-group-item" th:if="${terms.smokingAllowed}">Dozvoljeno pušenje</li>
+		<li class="list-group-item" th:if="${terms.petsAllowed}">Dozvoljeni ljubimci</li>
+	</ul>
+</div>

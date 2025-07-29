@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
+<head>
+<title layout:fragment="title">Postavka oglasa</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3">Postavka oglasa</h1>
+		<form class="mb-3" action="#" th:action="@{/oglasi/postavka}" th:object="${listingFormDTO}" method="post"
+			th:fragment="form">
+			<div class="row row-cols-sm-1 row-cols-md-2">
+				<div class="col col-lg-4" th:insert="~{partials/listings/create/create_building :: building}"></div>
+				<div class="col col-lg-4" th:insert="~{partials/listings/create/create_apartment :: apartment}"></div>
+			</div>
+			<div class="row row-cols-sm-1 row-cols-md-2">
+				<div class="col col-lg-4" th:insert="~{partials/listings/create/create_terms :: terms}"></div>
+				<div class="col col-lg-4" th:insert="~{partials/listings/create/create_main :: main}"></div>
+			</div>
+			<input class="btn btn-primary fw-semibold" type="submit" value="Postavi">
+		</form>
+	</div>
+</body>
+</html>

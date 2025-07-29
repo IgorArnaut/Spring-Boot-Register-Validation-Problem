@@ -1,0 +1,11 @@
+<div th:fragment="building (building)">
+	<h3 class="fw-semibold mb-3">Informacije o zgradi</h3>
+	<ul class="list-group-flush">
+		<li class="list-group-item">Godina izgradnje: [[${building.yearConstructed}]]</li>
+		<li class="list-group-item" th:if="${building.elevator}">Lift</li>
+		<li class="list-group-item" th:if="${building.parking}">Parking</li>
+		<li class="list-group-item" th:if="${building.garage}">Garaža`</li>
+		<li class="list-group-item" th:if="${building.cctv}">Video nadzor</li>
+		<li class="list-group-item" th:if="${building.intercom}">Interfon</li>
+	</ul>
+</div>

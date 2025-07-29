@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html">
+<head>
+<title layout:fragment="title">Prijava</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3">Prijava</h1>
+		<p class="mb-3">
+			Nemate nalog?
+			<a th:href="@{/korisnici/registracija}">Registrujte se</a>
+		</p>
+		<p th:if="${error}">Nešto nije u redu</p>
+		<div class="row row-cols-sm-1 row-cols-md-2">
+			<div class="col col-lg-4">
+				<form class="mb-3" action="#" th:action="@{/korisnici/prijava}" method="post">
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Imejl adresa</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="email" id="email" name="email" autofocus>
+							<!-- <span class="form-text text-danger" th:errors="*{email}"></span> -->
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Lozinka</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="password" id="password" name="password">
+							<!-- <span class="form-text text-danger" th:errors="*{password}"></span> -->
+						</div>
+					</div>
+					<input class="btn btn-primary fw-semibold" type="submit" value="Prijavi se" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

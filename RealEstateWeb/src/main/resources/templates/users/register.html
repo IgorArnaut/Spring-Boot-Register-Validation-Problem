@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html">
+<head>
+<title layout:fragment="title">Registracija</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h1 class="fw-bold mb-3">Registracija</h1>
+		<p class="mb-3">
+			Već imate nalog?
+			<a th:href="@{/korisnici/prijava}">Prijavite se</a>
+		</p>
+		<div class="row row-cols-sm-1 row-cols-md-2">
+			<div class="col col-lg-4">
+				<form class="mb-3" action="#" th:action="@{/korisnici/registracija}" th:object="${userDTO}" method="post">
+					<p th:if="${#fields.hasErrors('*')}" class="text-danger">There are validation errors!</p>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Imejl adresa</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="email" th:field="*{email}" autofocus>
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">A</span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Broj telefona</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="text" th:field="*{phoneNum}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Ime</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="text" th:field="*{firstName}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Prezime</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="text" th:field="*{lastName}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Datum rođenja</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="date" th:field="*{birthDate}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Lozinka</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="password" th:field="*{password1}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('password1')}" th:errors="*{password1}"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-4 col-form-label">Potvrdite lozinku</label>
+						<div class="col-sm-8">
+							<input class="form-control" type="password" th:field="*{password2}">
+							<span class="form-text text-danger" th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}"></span>
+						</div>
+					</div>
+					<input class="btn btn-primary fw-semibold" type="submit" value="Registruj se" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
